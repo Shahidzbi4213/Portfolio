@@ -190,7 +190,7 @@ const workExperiences = {
     },
     {
       role: "Android Engineer (Remote)",
-      company: "The Penguin Technologies - TPT",
+      company: "Penguin",
       companylogo: require("./assets/images/tptLogo.png"),
       companyUrl: "https://thepenguin.tech/",
       date: "June 2023 – Present",
