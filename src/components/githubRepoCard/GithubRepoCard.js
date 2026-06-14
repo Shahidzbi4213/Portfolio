@@ -24,7 +24,11 @@ export default function GithubRepoCard({repo, isDark}) {
           <div className="repo-name-div">
             {repo.node.logoUrl ? (
               <img
-                src={repo.node.logoUrl}
+                src={
+                  repo.node.logoUrl.startsWith("/")
+                    ? process.env.PUBLIC_URL + repo.node.logoUrl
+                    : repo.node.logoUrl
+                }
                 alt={`${repo.node.name} logo`}
                 className="repo-logo"
               />
