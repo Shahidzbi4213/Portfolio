@@ -60,7 +60,11 @@ export default function StartupProject() {
               .map((project, i) => {
                 const name = project.name || project.projectName;
                 const desc = project.description || project.projectDesc;
-                const icon = project.iconUrl || project.image;
+                const icon = project.iconUrl
+                  ? project.iconUrl.startsWith("/")
+                    ? process.env.PUBLIC_URL + project.iconUrl
+                    : project.iconUrl
+                  : project.image;
                 const category = project.category;
                 const technologies = project.technologies || [];
                 const playStoreUrl = project.playStoreUrl;
