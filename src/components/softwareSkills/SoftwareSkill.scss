@@ -19,13 +19,23 @@
   color: $subTitle;
 }
 
-.software-skill-inline > i:hover {
+.software-skill-inline > svg {
+  width: 3rem;
+  height: 3rem;
+  color: $subTitle;
+  transition: color 0.3s ease;
+  vertical-align: middle;
+}
+
+.software-skill-inline:hover > i,
+.software-skill-inline:hover > svg {
   color: $skillsColor;
 }
 .software-skill-inline > p {
   color: $subTitle;
   font-size: 10px;
+  transition: color 0.3s ease;
 }
-.software-skill-inline > i:hover ~ p {
+.software-skill-inline:hover > p {
   color: $skillsColor;
 }

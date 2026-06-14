@@ -87,7 +87,9 @@ if (USE_GITHUB_DATA === "true") {
   });
 
   req.on("error", error => {
-    throw error;
+    console.warn(
+      `Could not fetch profile data (offline/no network): ${error.message}`
+    );
   });
 
   req.write(data);
@@ -123,7 +125,9 @@ if (MEDIUM_USERNAME !== undefined) {
   });
 
   req.on("error", error => {
-    throw error;
+    console.warn(
+      `Could not fetch Medium blogs data (offline/no network): ${error.message}`
+    );
   });
 
   req.end();

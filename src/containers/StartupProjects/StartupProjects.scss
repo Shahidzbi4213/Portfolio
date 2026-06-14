@@ -1,85 +1,338 @@
 @import "../../_globalColor";
 
-.card-image {
-  max-width: 100%;
-  height: auto;
-  width: 250px;
+.projects-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1536px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
-.card-title {
-  color: $titleColor;
-  font-size: 22px;
-  line-height: 24px;
-  font-weight: 700;
-  margin: 15px 0 0 0;
-}
-.card-subtitle {
-  color: $cardSubtitle;
-  font-size: 17px;
-  line-height: 1.5rem;
-}
+
 .project-card {
   display: flex;
   flex-direction: column;
-  background-color: $lightBackground2;
+  background-color: var(--surface);
   padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-  justify-content: center;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  height: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
+
 .project-card-light {
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  background-color: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .project-card-dark {
-  box-shadow: 0px 10px 30px -15px $darkBoxShadow;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.25s ease;
+  background-color: var(--surface-variant);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
-.project-detail {
-  text-align: center;
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
+
 .project-card-light:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+  border-color: var(--accent);
 }
+
 .project-card-dark:hover {
-  box-shadow: 0px 20px 30px -10px $darkBoxShadow;
+  border-color: var(--accent);
 }
-.project-image {
-  position: relative;
-  height: 250px;
+
+.project-card-top {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.project-icon-container {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease;
+  margin-bottom: 16px; /* 16px between logo and next section */
+}
+
+.project-card:hover .project-icon-container {
+  transform: scale(1.05);
+}
+
+.project-app-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.project-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  background-color: rgba(14, 165, 233, 0.1);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+.project-card-dark .project-category {
+  color: var(--accent);
+  background-color: rgba(56, 189, 248, 0.15);
+}
+
+.project-review-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--error);
+  background-color: rgba(239, 68, 68, 0.1);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+.project-card-title {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  line-height: 1.45;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  padding: 2px 0;
+}
+
+.project-card-dark .project-card-title {
+  color: var(--text-primary);
+}
+
+.project-developer {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 550;
+}
+
+.project-card-dark .project-developer {
+  color: var(--text-secondary);
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.project-card-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.625;
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-card-dark .project-card-subtitle {
+  color: var(--text-secondary);
+}
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 24px;
+}
+
+.tech-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--surface-variant);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-card-dark .tech-tag {
+  color: var(--text-secondary);
+  background-color: var(--surface-variant);
+  border-color: var(--border);
+}
+
+.project-card:hover .tech-tag {
+  border-color: var(--accent);
+}
+
+.project-card-dark:hover .tech-tag {
+  border-color: var(--accent);
+}
+
+.project-footer {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+  width: 100%;
+}
+
+.project-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  height: 44px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.playstore-btn {
+  background-color: var(--primary);
+  color: var(--background) !important;
+}
+
+.playstore-btn:hover {
+  background-color: var(--accent-hover);
+  color: #ffffff !important;
+}
+
+.project-card-dark .playstore-btn {
+  background-color: var(--primary);
+  color: var(--background) !important;
+}
+
+.project-card-dark .playstore-btn:hover {
+  background-color: var(--accent);
+  color: var(--primary) !important;
+}
+
+.website-btn {
+  background-color: transparent;
+  color: var(--text-primary) !important;
+  border-color: var(--border);
+}
+
+.website-btn:hover {
+  background-color: var(--surface-variant);
+  border-color: var(--accent);
+}
+
+.project-card-dark .website-btn {
+  color: var(--text-primary) !important;
+  border-color: var(--border);
+}
+
+.project-card-dark .website-btn:hover {
+  background-color: var(--surface-variant);
+  border-color: var(--accent);
+}
+
+.generic-btn {
+  background-color: var(--secondary);
+  color: #ffffff !important;
+}
+
+.generic-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.category-navigation {
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem 0;
 }
 
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem 1rem;
-}
-
-.project-card-footer span.project-tag {
-  background: $buttonColor;
-  color: $lightBackground3;
-  vertical-align: middle;
-  align-items: center;
-  border-radius: 4px;
-  display: inline-flex;
-  font-size: 0.75rem;
-  height: 2em;
-  justify-content: center;
-  white-space: nowrap;
-  line-height: 1.5;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 0 0.75em;
+.category-btn {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s ease-in;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  outline: none;
+}
+
+.category-btn.light-btn {
+  color: var(--text-secondary);
+  border-color: var(--border);
+
+  &:hover {
+    background-color: var(--surface-variant);
+    color: var(--text-primary);
+  }
+
+  &.active {
+    background-color: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+  }
+}
+
+.category-btn.dark-btn {
+  color: var(--text-secondary);
+  border-color: var(--border);
+
+  &:hover {
+    background-color: var(--surface-variant);
+    color: var(--text-primary);
+  }
+
+  &.active {
+    background-color: var(--accent);
+    color: var(--background);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+  }
 }
 
 @media (max-width: 768px) {
@@ -87,4 +340,21 @@
     font-size: 16px;
     text-align: center;
   }
+}
+
+// Explicit MD3-inspired highlight state for active category button
+.category-btn.active {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+  border-color: var(--accent) !important;
+  box-shadow: var(--shadow-md) !important;
+  transform: scale(1.05);
+  font-weight: 700;
+}
+
+.dark-mode .category-btn.active {
+  background-color: var(--accent) !important;
+  color: var(--background) !important;
+  border-color: var(--accent) !important;
+  box-shadow: var(--shadow-md) !important;
 }

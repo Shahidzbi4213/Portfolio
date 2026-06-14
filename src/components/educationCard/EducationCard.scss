@@ -6,7 +6,7 @@
 }
 
 .education-card:hover + .education-card-border {
-  border-color: $educationCardBorder;
+  border-color: var(--accent);
   width: 100%;
   -webkit-transition: width 0.6s ease-in-out;
   -moz-transition: width 0.6s ease-in-out;
@@ -34,10 +34,8 @@
   margin: 0;
   font-size: 28px;
   font-weight: 700;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  height: 27px;
+  color: var(--text-primary);
+  line-height: 1.2;
 }
 
 .education-roundedimg {
@@ -97,7 +95,6 @@
   }
   .education-text-school {
     font-size: 20px;
-    height: 23px;
   }
   .education-text-duration {
     font-size: 16px;

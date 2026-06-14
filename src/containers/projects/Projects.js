@@ -27,10 +27,51 @@ export default function Projects() {
           setrepoFunction(response.data.user.pinnedItems.edges);
         })
         .catch(function (error) {
-          console.error(
-            `${error} (because of this error, nothing is shown in place of Projects section. Also check if Projects section has been configured)`
+          console.warn(
+            "Could not fetch profile.json, falling back to static repositories list:",
+            error
           );
-          setrepoFunction("Error");
+          setrepoFunction([
+            {
+              node: {
+                id: "repo-wallpaper",
+                name: "WallpaperApp-Cmp",
+                description:
+                  "A beautiful Wallpaper application built with Kotlin Multiplatform and Compose Multiplatform for Android and iOS.",
+                url: "https://github.com/Shahidzbi4213/WallpaperApp-Cmp",
+                forkCount: 0,
+                stargazers: {
+                  totalCount: 1
+                },
+                diskUsage: 1200,
+                primaryLanguage: {
+                  name: "Kotlin",
+                  color: "#F18E33"
+                },
+                logoUrl:
+                  "https://raw.githubusercontent.com/Shahidzbi4213/WallpaperApp-Cmp/main/iosApp/iosApp/Assets.xcassets/AppIcon.appiconset/app-icon-1024.png"
+              }
+            },
+            {
+              node: {
+                id: "repo-reels",
+                name: "Reels Library",
+                description:
+                  "An interactive video reels application built using Jetpack Compose and ExoPlayer/Media3 for seamless short video playback.",
+                url: "https://github.com/Shahidzbi4213/SampleReelsApp",
+                forkCount: 0,
+                stargazers: {
+                  totalCount: 2
+                },
+                diskUsage: 850,
+                primaryLanguage: {
+                  name: "Kotlin",
+                  color: "#F18E33"
+                },
+                logoUrl: "/apps/default-reels-logo.jpg"
+              }
+            }
+          ]);
         });
     };
     getRepoData();

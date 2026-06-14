@@ -8,15 +8,18 @@
   z-index: 99;
   border: none;
   outline: none;
-  background-color: $buttonColor;
+  background-color: var(--accent);
   color: white;
   cursor: pointer;
   padding: 15px;
-  border-radius: 15px;
+  border-radius: var(--radius-full);
   font-size: 25px;
+  box-shadow: var(--shadow-md);
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
 
 #topButton:hover {
-  background-color: $topButtonHover;
-  transition: all ease-in-out 0.2s;
+  background-color: var(--accent-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }

@@ -8,16 +8,16 @@
 /* header */
 
 .dark-menu {
-  background-color: $darkBackground !important;
-  color: $textColorDark;
+  background-color: var(--surface) !important;
+  color: var(--text-primary);
 }
 
 .dark-menu li a {
-  color: $textColorDark !important;
+  color: var(--text-primary) !important;
 }
 
 .dark-menu li a:hover {
-  background-color: $buttonColor !important;
+  background-color: var(--surface-variant) !important;
 }
 
 .header {
@@ -58,6 +58,12 @@
   text-decoration: none;
   margin-top: 10px;
   line-height: normal;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.header .logo:hover {
+  color: var(--accent);
 }
 
 .header .logo-name {

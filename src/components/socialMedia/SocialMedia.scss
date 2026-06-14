@@ -9,7 +9,7 @@
 }
 
 .icon-button i {
-  color: $textColorDark;
+  color: #ffffff;
   border-radius: 2.6rem;
   cursor: pointer;
   display: inline-block;
@@ -37,7 +37,7 @@
 }
 
 .github i {
-  background-color: $github;
+  background-color: var(--primary-container);
 }
 
 .gitlab i {
@@ -53,7 +53,7 @@
 }
 
 .medium i {
-  background-color: $medium;
+  background-color: var(--primary-container);
 }
 
 .stack-overflow i {
@@ -79,7 +79,7 @@
 .stack-overflow i:hover,
 .kaggle i:hover,
 .medium i:hover {
-  background-color: $textColor;
+  background-color: var(--accent);
 }
 
 /* Media Query */

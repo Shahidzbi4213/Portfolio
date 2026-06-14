@@ -30,8 +30,31 @@ export default function ExperienceCard({cardInfo, isDark}) {
       : null;
   };
 
+  const handleCardClick = () => {
+    if (cardInfo.companyUrl) {
+      window.open(cardInfo.companyUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
-    <div className={isDark ? "experience-card-dark" : "experience-card"}>
+    <div
+      className={`${isDark ? "experience-card-dark" : "experience-card"} ${
+        cardInfo.companyUrl ? "clickable" : ""
+      }`}
+      onClick={handleCardClick}
+      role={cardInfo.companyUrl ? "button" : undefined}
+      tabIndex={cardInfo.companyUrl ? 0 : undefined}
+      onKeyDown={
+        cardInfo.companyUrl
+          ? e => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleCardClick();
+              }
+            }
+          : undefined
+      }
+    >
       <div style={{background: rgb(colorArrays)}} className="experience-banner">
         <div className="experience-blurred_div"></div>
         <div className="experience-div-company">
