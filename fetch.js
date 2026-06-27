@@ -30,29 +30,33 @@ if (USE_GITHUB_DATA === "true") {
     bio
     avatarUrl
     location
-    pinnedItems(first: 6, types: [REPOSITORY]) {
+    repositories(
+      first: 15
+      isFork: false
+      privacy: PUBLIC
+      orderBy: {field: PUSHED_AT, direction: DESC}
+      ownerAffiliations: OWNER
+    ) {
       totalCount
       edges {
-          node {
-            ... on Repository {
-              name
-              description
-              forkCount
-              stargazers {
-                totalCount
-              }
-              url
-              id
-              diskUsage
-              primaryLanguage {
-                name
-                color
-              }
-            }
+        node {
+          name
+          description
+          forkCount
+          stargazers {
+            totalCount
+          }
+          url
+          id
+          diskUsage
+          primaryLanguage {
+            name
+            color
           }
         }
       }
     }
+  }
 }
 `
   });

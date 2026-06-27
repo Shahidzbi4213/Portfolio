@@ -24,7 +24,13 @@ export default function Projects() {
           throw result;
         })
         .then(response => {
-          setrepoFunction(response.data.user.pinnedItems.edges);
+          const user = response.data.user;
+          const edges =
+            (user.repositories && user.repositories.edges) ||
+            (user.pinnedItems && user.pinnedItems.edges) ||
+            [];
+          // Display the top 4 or top 5 open-source projects consistently
+          setrepoFunction(edges.slice(0, 5));
         })
         .catch(function (error) {
           console.warn(
@@ -34,6 +40,26 @@ export default function Projects() {
           setrepoFunction([
             {
               node: {
+                id: "repo-geoqibla",
+                name: "GeoQibla",
+                description:
+                  "GeoQibla is a Kotlin Multiplatform library for Android and iOS that provides accurate Qibla direction using geolocation and device sensors, enabling shared business logic with native performance and sensor integration.",
+                url: "https://github.com/Shahidzbi4213/GeoQibla",
+                forkCount: 0,
+                stargazers: {
+                  totalCount: 3
+                },
+                diskUsage: 1938,
+                primaryLanguage: {
+                  name: "Kotlin",
+                  color: "#F18E33"
+                },
+                logoUrl:
+                  "https://shahidzbi4213.github.io/GeoQibla/assets/geoqibla-icon.svg"
+              }
+            },
+            {
+              node: {
                 id: "repo-wallpaper",
                 name: "WallpaperApp-Cmp",
                 description:
@@ -41,7 +67,7 @@ export default function Projects() {
                 url: "https://github.com/Shahidzbi4213/WallpaperApp-Cmp",
                 forkCount: 0,
                 stargazers: {
-                  totalCount: 1
+                  totalCount: 19
                 },
                 diskUsage: 1200,
                 primaryLanguage: {
@@ -54,6 +80,24 @@ export default function Projects() {
             },
             {
               node: {
+                id: "repo-screeny-compose",
+                name: "Screeny-Compose",
+                description:
+                  "A wallpaper application using Jetpack Compose and Pexels API.",
+                url: "https://github.com/Shahidzbi4213/Screeny-Compose",
+                forkCount: 0,
+                stargazers: {
+                  totalCount: 15
+                },
+                diskUsage: 1500,
+                primaryLanguage: {
+                  name: "Kotlin",
+                  color: "#F18E33"
+                }
+              }
+            },
+            {
+              node: {
                 id: "repo-reels",
                 name: "Reels Library",
                 description:
@@ -61,7 +105,7 @@ export default function Projects() {
                 url: "https://github.com/Shahidzbi4213/SampleReelsApp",
                 forkCount: 0,
                 stargazers: {
-                  totalCount: 2
+                  totalCount: 19
                 },
                 diskUsage: 850,
                 primaryLanguage: {
@@ -73,22 +117,20 @@ export default function Projects() {
             },
             {
               node: {
-                id: "repo-geoqibla",
-                name: "GeoQibla",
+                id: "repo-onetapgoogle",
+                name: "OneTapGoogle",
                 description:
-                  "A Kotlin Multiplatform Compose library designed to calculate Qibla direction, manage location services, and integrate compass sensor functionality.",
-                url: "https://github.com/Shahidzbi4213/GeoQibla",
+                  "OneTap Google Sign-In helper library for authentication implementation.",
+                url: "https://github.com/Shahidzbi4213/OneTapGoogle",
                 forkCount: 0,
                 stargazers: {
-                  totalCount: 1
+                  totalCount: 10
                 },
-                diskUsage: 950,
+                diskUsage: 500,
                 primaryLanguage: {
                   name: "Kotlin",
                   color: "#F18E33"
-                },
-                logoUrl:
-                  "https://shahidzbi4213.github.io/GeoQibla/assets/geoqibla-icon.svg"
+                }
               }
             }
           ]);
@@ -98,42 +140,7 @@ export default function Projects() {
   }, []);
 
   function setrepoFunction(array) {
-    const geoQiblaRepo = {
-      node: {
-        id: "repo-geoqibla",
-        name: "GeoQibla",
-        description:
-          "A Kotlin Multiplatform Compose library designed to calculate Qibla direction, manage location services, and integrate compass sensor functionality.",
-        url: "https://github.com/Shahidzbi4213/GeoQibla",
-        forkCount: 0,
-        stargazers: {
-          totalCount: 1
-        },
-        diskUsage: 950,
-        primaryLanguage: {
-          name: "Kotlin",
-          color: "#F18E33"
-        },
-        logoUrl:
-          "https://shahidzbi4213.github.io/GeoQibla/assets/geoqibla-icon.svg"
-      }
-    };
-
-    // Check if GeoQibla is already in the fetched list
-    const hasGeoQibla = array.some(
-      item =>
-        item &&
-        item.node &&
-        (item.node.name === "GeoQibla" ||
-          item.node.id === "repo-geoqibla" ||
-          (item.node.url && item.node.url.includes("GeoQibla")))
-    );
-
-    if (!hasGeoQibla) {
-      setrepo([...array, geoQiblaRepo]);
-    } else {
-      setrepo(array);
-    }
+    setrepo(array);
   }
   if (
     !(typeof repo === "string" || repo instanceof String) &&
