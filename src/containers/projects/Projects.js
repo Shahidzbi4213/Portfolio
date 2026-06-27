@@ -52,7 +52,7 @@ export default function Projects() {
                 diskUsage: 1938,
                 primaryLanguage: {
                   name: "Kotlin",
-                  color: "#F18E33"
+                  color: "#C018E4"
                 },
                 logoUrl:
                   "https://shahidzbi4213.github.io/GeoQibla/assets/geoqibla-icon.svg"
@@ -72,7 +72,7 @@ export default function Projects() {
                 diskUsage: 1200,
                 primaryLanguage: {
                   name: "Kotlin",
-                  color: "#F18E33"
+                  color: "#C018E4"
                 },
                 logoUrl:
                   "https://raw.githubusercontent.com/Shahidzbi4213/WallpaperApp-Cmp/main/iosApp/iosApp/Assets.xcassets/AppIcon.appiconset/app-icon-1024.png"
@@ -92,7 +92,7 @@ export default function Projects() {
                 diskUsage: 1500,
                 primaryLanguage: {
                   name: "Kotlin",
-                  color: "#F18E33"
+                  color: "#C018E4"
                 }
               }
             },
@@ -110,7 +110,7 @@ export default function Projects() {
                 diskUsage: 850,
                 primaryLanguage: {
                   name: "Kotlin",
-                  color: "#F18E33"
+                  color: "#C018E4"
                 },
                 logoUrl: "/apps/default-reels-logo.jpg"
               }
@@ -129,7 +129,7 @@ export default function Projects() {
                 diskUsage: 500,
                 primaryLanguage: {
                   name: "Kotlin",
-                  color: "#F18E33"
+                  color: "#C018E4"
                 }
               }
             }
