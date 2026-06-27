@@ -98,7 +98,42 @@ export default function Projects() {
   }, []);
 
   function setrepoFunction(array) {
-    setrepo(array);
+    const geoQiblaRepo = {
+      node: {
+        id: "repo-geoqibla",
+        name: "GeoQibla",
+        description:
+          "A Kotlin Multiplatform Compose library designed to calculate Qibla direction, manage location services, and integrate compass sensor functionality.",
+        url: "https://github.com/Shahidzbi4213/GeoQibla",
+        forkCount: 0,
+        stargazers: {
+          totalCount: 1
+        },
+        diskUsage: 950,
+        primaryLanguage: {
+          name: "Kotlin",
+          color: "#F18E33"
+        },
+        logoUrl:
+          "https://shahidzbi4213.github.io/GeoQibla/assets/geoqibla-icon.svg"
+      }
+    };
+
+    // Check if GeoQibla is already in the fetched list
+    const hasGeoQibla = array.some(
+      item =>
+        item &&
+        item.node &&
+        (item.node.name === "GeoQibla" ||
+          item.node.id === "repo-geoqibla" ||
+          (item.node.url && item.node.url.includes("GeoQibla")))
+    );
+
+    if (!hasGeoQibla) {
+      setrepo([...array, geoQiblaRepo]);
+    } else {
+      setrepo(array);
+    }
   }
   if (
     !(typeof repo === "string" || repo instanceof String) &&
