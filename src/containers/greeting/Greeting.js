@@ -203,7 +203,11 @@ export default function Greeting() {
                     {/* Hero Profile Block */}
                     <div className="mock-profile-card">
                       <div className="avatar-circle">
-                        <span>SI</span>
+                        <img
+                          src="https://avatars.githubusercontent.com/u/45350491?v=4"
+                          alt="Shahid Iqbal"
+                          className="avatar-img"
+                        />
                       </div>
                       <h4 className="mock-profile-name">Shahid Iqbal</h4>
                       <p className="mock-profile-title">Mobile App Engineer</p>
