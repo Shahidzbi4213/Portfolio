@@ -2,7 +2,7 @@ import React from "react";
 import "./SoftwareSkill.scss";
 import {skillsSection} from "../../portfolio";
 
-export default function SoftwareSkill() {
+export default function SoftwareSkill({filterSkills}) {
   const renderIcon = (skillName, className) => {
     const name = skillName.toLowerCase();
 
@@ -107,11 +107,17 @@ export default function SoftwareSkill() {
     return <i className={className}></i>;
   };
 
+  const currentSkills = filterSkills
+    ? skillsSection.softwareSkills.filter(s =>
+        filterSkills.includes(s.skillName)
+      )
+    : skillsSection.softwareSkills;
+
   return (
     <div>
       <div className="software-skills-main-div">
         <ul className="dev-icons">
-          {skillsSection.softwareSkills.map((skills, i) => {
+          {currentSkills.map((skills, i) => {
             return (
               <li
                 key={i}

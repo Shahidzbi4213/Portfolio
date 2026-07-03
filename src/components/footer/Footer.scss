@@ -1,15 +1,30 @@
 @import "../../_globalColor";
 
+.footer-div {
+  margin-top: 4rem;
+  padding: 24px 16px;
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .footer-text {
   text-align: center;
-  color: $subTitle !important;
-}
+  font-size: 0.85rem;
+  color: var(--md-sys-color-outline) !important;
+  margin: 0;
+  font-weight: 500;
 
-.dark-mode {
-  color: $textColorDark !important;
-}
+  a {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
 
-.footer-div {
-  margin-top: 2rem;
-  padding-bottom: 1rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

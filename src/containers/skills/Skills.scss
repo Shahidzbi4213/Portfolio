@@ -1,64 +1,165 @@
 @import "../../_globalColor";
 
-.skills-main-div {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
-}
-
-.skills-text-div {
-  margin-left: 50px;
-}
-
-.skills-main-div > * {
-  flex: 1;
-  margin-bottom: 30px;
-}
-
-.skills-image-div > img {
-  max-width: 100%;
-  height: auto;
+.skills-heading-div {
+  text-align: center;
+  margin-bottom: 48px;
 }
 
 .skills-heading {
-  font-size: 56px;
-  font-weight: 400;
-}
-.subTitle {
-  color: $subTitle;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-background);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
 }
 
-/* Media Query */
-@media (max-width: 1380px) {
-  .skills-heading {
-    font-size: 40px;
+.skills-text-subtitle {
+  font-size: 1.15rem;
+  color: var(--md-sys-color-on-surface-variant);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.skills-main-div {
+  width: 100%;
+}
+
+.skills-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+/* Premium M3 Engineering Card Styling */
+.m3-engineering-card {
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: all 0.25s var(--md-sys-motion-easing-standard);
+  height: 100%;
+
+  &:hover {
+    background-color: var(--md-sys-color-surface-container);
+    border-color: var(--md-sys-color-outline);
+    box-shadow: var(--md-sys-elevation-level2);
+    transform: translateY(-4px);
   }
 }
+
+.eng-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.eng-card-icon-container {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+
+  i {
+    color: var(--md-sys-color-primary);
+  }
+}
+
+.eng-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+}
+
+.eng-card-desc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 0 0 20px 0;
+}
+
+.eng-card-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.eng-bullet-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: left;
+
+  .bullet-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-primary);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+}
+
+.eng-card-tags {
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.tags-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--md-sys-color-outline);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .skills-grid-container {
+    gap: 20px;
+    padding: 0 10px;
+  }
+}
+
 @media (max-width: 768px) {
   .skills-heading {
     font-size: 30px;
-    text-align: center;
   }
-  .greeting-text-p {
-    font-size: 16px;
-    line-height: normal;
-  }
-  .skills-main-div {
-    flex-direction: column;
-  }
-  .skills-text-div {
-    margin-left: 0px;
-    margin: 20px;
-  }
-  .skills-text {
-    font-size: 16px;
-  }
+
   .skills-text-subtitle {
-    font-size: 16px;
-    text-align: center;
+    font-size: 1rem;
+    padding: 0 16px;
   }
-  .skills-image-div {
-    /* display: none; */
-    order: 2;
+
+  .skills-grid-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .m3-engineering-card {
+    padding: 24px;
   }
 }

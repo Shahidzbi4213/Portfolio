@@ -1,31 +1,46 @@
 @import "../../_globalColor";
 
 .main-button {
-  background-color: var(--accent);
-  border: 1px solid var(--accent);
-  color: #ffffff !important;
+  background-color: var(--md-sys-color-primary);
+  border: 1px solid var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary) !important;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   width: max-content;
   padding: 12px 28px;
-  margin-right: 50px;
-  text-transform: none; /* Material 3 favors mixed case */
-  border-radius: var(--radius-xxl); /* 28px radius */
+  margin-right: 16px;
+  text-transform: none;
+  border-radius: var(--md-sys-shape-corner-full);
   text-align: center;
   text-decoration: none;
   display: block;
   margin-top: 20px;
   font-size: 0.95rem;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+  transition: all 0.2s var(--md-sys-motion-easing-standard);
+
+  &.outlined-button {
+    background-color: transparent;
+    border: 1px solid var(--md-sys-color-outline);
+    color: var(--md-sys-color-primary) !important;
+    box-shadow: none;
+
+    &:hover {
+      background-color: var(--md-sys-color-surface-container-high);
+      border-color: var(--md-sys-color-primary);
+      color: var(--md-sys-color-primary) !important;
+      transform: translateY(-2px);
+    }
+  }
 }
 
 .main-button:hover {
-  background-color: var(--accent-hover);
-  border-color: var(--accent-hover);
-  color: #ffffff !important;
-  box-shadow: var(--shadow-md);
+  background-color: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary) !important;
+  opacity: 0.95;
+  box-shadow: var(--md-sys-elevation-level1);
   transform: translateY(-2px);
 }
 
@@ -45,6 +60,7 @@
     font-size: 0.9rem;
     padding: 10px 24px;
     margin-right: 0px;
+    width: 100%;
   }
 }
 
