@@ -50,13 +50,7 @@ export default function GithubRepoCard({repo, isDark}) {
             <p className="repo-name">{repo.node.name}</p>
           </div>
           <p className="repo-description">{repo.node.description}</p>
-          <div className="repo-stats">
-            <div className="repo-left-stat">
-            </div>
-            <div className="repo-right-stat">
-              <p>{formatFileSizeDisplay(repo.node.diskUsage)}</p>
-            </div>
-          </div>
+
         </div>
       </div>
     </Fade>
