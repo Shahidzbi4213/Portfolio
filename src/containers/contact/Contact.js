@@ -1,66 +1,58 @@
 import React, {useContext} from "react";
 import "./Contact.scss";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
-import {illustration, contactInfo} from "../../portfolio";
+import {contactInfo} from "../../portfolio";
 import {Fade} from "react-reveal";
-import email from "../../assets/lottie/email";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import StyleContext from "../../contexts/StyleContext";
 
 export default function Contact() {
   const {isDark} = useContext(StyleContext);
+
   return (
     <Fade bottom duration={1000} distance="20px">
       <div className="main contact-margin-top" id="contact">
         <div className="contact-div-main">
-          <div className="contact-header">
-            <h1 className="heading contact-title">{contactInfo.title}</h1>
-            <p
-              className={
-                isDark
-                  ? "dark-mode contact-subtitle"
-                  : "subTitle contact-subtitle"
-              }
-            >
-              {contactInfo.subtitle}
-            </p>
-            <div
-              className={
-                isDark ? "dark-mode contact-text-div" : "contact-text-div"
-              }
-            >
-              {contactInfo.number && (
-                <>
-                  <a
-                    className="contact-detail"
-                    href={"tel:" + contactInfo.number}
-                  >
-                    {contactInfo.number}
-                  </a>
-                  <br />
-                  <br />
-                </>
-              )}
-              <a
-                className="contact-detail-email"
-                href={"mailto:" + contactInfo.email_address}
+          {/* Centered M3 Elevated Card */}
+          <div className="m3-contact-card">
+            <div className="contact-card-header">
+              <div className="contact-badge">
+                <i className="fas fa-paper-plane"></i>
+                <span>GET IN TOUCH</span>
+              </div>
+              <h2 className="contact-title">{contactInfo.title}</h2>
+              <p
+                className={
+                  isDark
+                    ? "dark-mode contact-subtitle"
+                    : "subTitle contact-subtitle"
+                }
               >
-                {contactInfo.email_address}
-              </a>
-              <br />
-              <br />
-              <SocialMedia />
+                {contactInfo.subtitle}
+              </p>
             </div>
-          </div>
-          <div className="contact-image-div">
-            {illustration.animated ? (
-              <DisplayLottie animationData={email} />
-            ) : (
-              <img
-                alt="Man working"
-                src={require("../../assets/images/contactMailDark.svg")}
-              ></img>
-            )}
+
+            <div className="contact-card-actions">
+              {/* Primary Email CTA Styled as M3 Filled Button */}
+              <a
+                className="m3-filled-btn email-cta"
+                href={`mailto:${contactInfo.email_address}`}
+                aria-label={`Send email to ${contactInfo.email_address}`}
+              >
+                <i className="fas fa-envelope"></i>
+                <span>Email me</span>
+              </a>
+            </div>
+
+            <div className="contact-card-divider"></div>
+
+            <div className="contact-card-footer">
+              <span className="footer-sub-label">
+                Connect across professional networks
+              </span>
+              <div className="social-links-container">
+                <SocialMedia />
+              </div>
+            </div>
           </div>
         </div>
       </div>

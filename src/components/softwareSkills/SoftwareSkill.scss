@@ -3,63 +3,62 @@
 .dev-icons {
   padding-left: 0;
   list-style: none;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
+/* Styled as compact M3 Assist Chips */
 .software-skill-inline {
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  min-width: 110px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+  gap: 8px;
+  padding: 6px 12px;
+  background-color: var(--md-sys-color-surface-container-highest);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+  min-width: auto;
+  transition: all 0.2s var(--md-sys-motion-easing-standard);
+  cursor: default;
+  box-sizing: border-box;
 }
 
 .software-skill-inline > i {
-  color: var(--text-secondary);
-  font-size: 2.5rem;
-  transition: color 0.2s ease;
+  color: var(--md-sys-color-primary);
+  font-size: 1.15rem;
+  transition: transform 0.2s ease;
 }
 
 .software-skill-inline > svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--md-sys-color-primary);
+  transition: transform 0.2s ease;
   vertical-align: middle;
 }
 
 .software-skill-inline > p {
-  color: var(--text-secondary);
-  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.75rem;
   font-weight: 600;
-  margin: 8px 0 0 0;
+  margin: 0;
   transition: color 0.2s ease;
-  text-align: center;
+  text-align: left;
 }
 
 .software-skill-inline:hover {
-  border-color: var(--primary);
-  background-color: var(--surface-variant);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-2px);
+  border-color: var(--md-sys-color-outline);
+  background-color: var(--md-sys-color-surface-container-high);
 }
 
 .software-skill-inline:hover > i,
 .software-skill-inline:hover > svg {
-  color: var(--primary);
+  transform: scale(1.1);
 }
 
 .software-skill-inline:hover > p {
-  color: var(--primary);
+  color: var(--md-sys-color-on-surface);
 }

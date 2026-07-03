@@ -1,32 +1,24 @@
 @import "../../_globalColor";
 
-.experience-card {
-  position: relative;
-  background-color: var(--surface);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  max-width: 450px;
-  width: 100%;
-  margin: 0 auto;
-}
-
+.experience-card,
 .experience-card-dark {
   position: relative;
-  background-color: var(--surface-variant);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-shape-corner-large);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  transition: all 0.25s var(--md-sys-motion-easing-standard);
   max-width: 450px;
   width: 100%;
   margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .experience-card:hover,
 .experience-card-dark:hover {
-  box-shadow: var(--shadow-md);
+  background-color: var(--md-sys-color-surface-container);
+  border-color: var(--md-sys-color-outline);
+  box-shadow: var(--md-sys-elevation-level2);
   transform: translateY(-4px);
 }
 
@@ -34,32 +26,25 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 150%;
-  background: $experienceCardBannerLG;
-  border-radius: var(--radius-xl) var(--radius-xl) 0px 0px;
-  -webkit-filter: blur(0px);
-  -moz-filter: blur(0px);
-  -o-filter: blur(0px);
-  -ms-filter: blur(0px);
-  filter: blur(0px);
+  border-radius: var(--md-sys-shape-corner-large)
+    var(--md-sys-shape-corner-large) 0px 0px;
   height: 7rem;
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  position: relative;
 }
 
 .experience-blurred_div {
   position: absolute;
-  background: $experienceCardBlurredDivLG;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
   height: 7rem;
   top: 0;
   left: 0;
   width: 100%;
-  border-radius: var(--radius-xl) var(--radius-xl) 0px 0px;
+  border-radius: var(--md-sys-shape-corner-large)
+    var(--md-sys-shape-corner-large) 0px 0px;
 }
 
 .experience-div-company {
@@ -72,6 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .experience-text-company {
@@ -79,8 +65,9 @@
   padding: 1rem;
   margin: 0;
   color: #ffffff;
-  font-size: 27px;
+  font-size: 1.5rem;
   font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -94,44 +81,45 @@
   top: 4.5rem;
   margin-left: auto;
   margin-right: auto;
-  width: 5rem;
-  height: 5rem;
-  box-shadow: var(--shadow-sm);
-  border: 3px solid var(--surface);
-  border-radius: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  box-shadow: var(--md-sys-elevation-level1);
+  border: 3px solid var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-shape-corner-full);
+  z-index: 3;
+  background-color: white;
 }
 
 .experience-text-role {
   text-align: center;
-  color: $textColor;
+  color: var(--md-sys-color-on-surface) !important;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 1.25rem;
   margin: 0px;
-  padding-top: 1rem;
+  padding-top: 1.25rem;
   line-height: normal;
 }
-.dark-mode-text {
-  color: $textColorDark !important;
-}
+
 .experience-text-date {
   text-align: center;
-  color: $textColor;
-  font-size: 19px;
+  color: var(--md-sys-color-outline) !important;
+  font-size: 0.9rem;
   margin: 0px;
-  padding-top: 0.5rem;
+  padding-top: 0.25rem;
   font-weight: 600;
 }
 
 .experience-text-desc {
   text-align: left;
-  font-size: 18px;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  line-height: 1.5;
   margin-top: 0.75rem;
   margin-bottom: 0.5rem;
+  color: var(--md-sys-color-on-surface-variant) !important;
 }
 
 .experience-text-details {
-  padding: 1rem;
+  padding: 16px;
   margin-top: 1.25rem;
 
   ul {
@@ -139,62 +127,42 @@
     margin: 0.5rem 0 0 0;
 
     li {
-      font-size: 18px;
-      line-height: 1.4;
+      font-size: 0.9rem;
+      line-height: 1.5;
       margin-bottom: 0.35rem;
       text-align: left;
+      color: var(--md-sys-color-on-surface-variant) !important;
     }
   }
 }
 
-/* Media Query */
-
-@media (max-width: 1380px) {
-  .experience-text-role {
-    padding-top: 0.5rem;
-    font-size: 20px;
-  }
-  .experience-text-company {
-    font-size: 22px;
-  }
-  .experience-text-date {
-    font-size: 16px;
-  }
-  .experience-roundedimg {
-    width: 4.5rem;
-    height: 4.5rem;
-    top: 4.75rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .experience-text-role {
-    font-size: 20px;
-  }
-  .experience-text-company {
-    font-size: 22px;
-  }
-  .experience-text-date {
-    font-size: 16px;
-  }
-  .experience-text-desc {
-    font-size: 15px;
-  }
-}
-
+/* Explicit MD3 focus states */
 .experience-card.clickable,
 .experience-card-dark.clickable {
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
   outline: none;
 
   &:focus-visible {
-    outline: 2px solid $textColor;
+    outline: 2px solid var(--md-sys-color-primary);
     outline-offset: 2px;
   }
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--md-sys-elevation-level3);
+  }
+}
+
+@media (max-width: 1380px) {
+  .experience-text-role {
+    font-size: 1.15rem;
+  }
+  .experience-text-company {
+    font-size: 1.35rem;
+  }
+  .experience-roundedimg {
+    width: 4rem;
+    height: 4rem;
+    top: 4.75rem;
   }
 }

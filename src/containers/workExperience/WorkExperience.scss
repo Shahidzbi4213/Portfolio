@@ -1,38 +1,33 @@
-.experience-cards-div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-.experience-heading {
-  font-size: 56px;
-  font-weight: 400;
-}
-
 .experience-container {
   display: flex;
+  flex-direction: column;
   width: 90%;
-  padding: 20px 10px;
+  padding: 40px 10px;
   margin: 0px auto;
   margin-top: 2rem;
 }
 
-.experience-container > * {
-  flex: 1;
+.experience-heading {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-background);
+  text-align: center;
+  margin-bottom: 32px;
 }
 
-/* Media Query */
-
-@media (max-width: 1380px) {
-  .experience-heading {
-    font-size: 40px;
-  }
+.experience-cards-div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .experience-heading {
     font-size: 30px;
-    text-align: center;
+  }
+  .experience-cards-div {
+    grid-template-columns: 1fr;
   }
 }

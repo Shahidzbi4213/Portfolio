@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Types for Technology Showcase
 interface TechItem {
@@ -9,20 +9,26 @@ interface TechItem {
   url: string;
   color: string;
   glowColor: string;
+  categories: string[];
   svg: React.ReactNode;
 }
 
 // Types for Content Cards
 interface CardItem {
+  id: string;
   title: string;
   description: string;
   number: string;
   gradient: string;
+  codeFun: string;
+  codeLines: string[];
   icon: React.ReactNode;
 }
 
 export default function WhatIDo() {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
 
   // Senior Highlights List
   const highlights = [
@@ -42,13 +48,14 @@ export default function WhatIDo() {
     "Google Play Deployment"
   ];
 
-  // 18 Technologies with official SVG paths, URLs and colors
+  // 18 Technologies with category tags, official SVG paths, URLs and colors
   const technologies: TechItem[] = [
     {
       name: "Android",
       url: "https://developer.android.com",
       color: "text-[#3DDB85]",
-      glowColor: "shadow-[#3DDB85]/20 border-[#3DDB85]/30",
+      glowColor: "shadow-[#3DDB85]/20 border-[#3DDB85]/50 bg-[#3DDB85]/5",
+      categories: ["android", "ui"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z" />
@@ -59,7 +66,8 @@ export default function WhatIDo() {
       name: "Kotlin",
       url: "https://kotlinlang.org",
       color: "text-[#7F52FF]",
-      glowColor: "shadow-[#7F52FF]/20 border-[#7F52FF]/30",
+      glowColor: "shadow-[#7F52FF]/20 border-[#7F52FF]/50 bg-[#7F52FF]/5",
+      categories: ["android", "kmp", "ui"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M24 24H0V0h24L12 12Z" />
@@ -70,7 +78,8 @@ export default function WhatIDo() {
       name: "Kotlin Multiplatform",
       url: "https://kotlinlang.org/lp/multiplatform",
       color: "text-[#37BCFD]",
-      glowColor: "shadow-[#7F52FF]/20 border-[#37BCFD]/30",
+      glowColor: "shadow-[#37BCFD]/20 border-[#37BCFD]/50 bg-[#37BCFD]/5",
+      categories: ["kmp"],
       svg: (
         <svg viewBox="0 0 48 48" fill="none" className="w-full h-full" aria-hidden="true">
           <path d="M0 22.5629V0.0835311L22.4794 22.5629H0ZM0 25.4372V48H0.0572568L22.6201 25.4372H0ZM25.9906 22.0094L48 0H3.98128L25.9906 22.0094ZM26.0193 26.1028L4.1221 48H47.9164L26.0193 26.1028Z" fill="url(#kmpGradient)" />
@@ -88,7 +97,8 @@ export default function WhatIDo() {
       name: "Compose Multiplatform",
       url: "https://www.jetbrains.com/lp/compose-multiplatform",
       color: "text-[#6075F2]",
-      glowColor: "shadow-[#6B57FF]/20 border-[#6075F2]/30",
+      glowColor: "shadow-[#6B57FF]/20 border-[#6075F2]/50 bg-[#6075F2]/5",
+      categories: ["kmp", "ui"],
       svg: (
         <svg viewBox="0 0 50 56" fill="none" className="w-full h-full" aria-hidden="true">
           <path d="M49 14V42L25 56L1 42V14L25 0L49 14Z" fill="#6075F2" />
@@ -113,7 +123,8 @@ export default function WhatIDo() {
       name: "Jetpack Compose",
       url: "https://developer.android.com/jetpack/compose",
       color: "text-[#4285F4]",
-      glowColor: "shadow-[#4285F4]/20 border-[#3DDB85]/30",
+      glowColor: "shadow-[#4285F4]/20 border-[#4285F4]/50 bg-[#4285F4]/5",
+      categories: ["android", "ui"],
       svg: (
         <svg viewBox="0 0 128 128" fill="none" className="w-full h-full" aria-hidden="true">
           <path d="M41.226 76.778a4.002 4.002 0 0 1-.47-1.29c.09.452.25.887.47 1.29zm.578.713c.222.22.472.411.749.548l18.88 10.565-18.88-10.565a2.899 2.899 0 0 1-.747-.548z" fill="#083042" />
@@ -134,7 +145,8 @@ export default function WhatIDo() {
       name: "Material Design 3",
       url: "https://m3.material.io",
       color: "text-[#2196F3]",
-      glowColor: "shadow-[#2196F3]/20 border-[#2196F3]/30",
+      glowColor: "shadow-[#2196F3]/20 border-[#2196F3]/50 bg-[#2196F3]/5",
+      categories: ["ui"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M11.9998 23.9997c-1.6545 0-3.218-.309-4.691-.927-1.4544-.6364-2.7269-1.4909-3.8179-2.5639-1.073-1.0905-1.9274-2.3634-2.5634-3.8179C.3085 15.2179 0 13.6545 0 12c0-1.6725.309-3.2364.927-4.6909.6365-1.4545 1.491-2.718 2.564-3.791C4.5818 2.4278 5.8543 1.5733 7.3087.9548c1.473-.6365 3.0365-.9545 4.691-.9545 1.673 0 3.2364.318 4.6909.955 1.4544.618 2.7179 1.4725 3.7909 2.563 1.091 1.073 1.945 2.3364 2.5634 3.7909C23.6815 8.7641 24 10.3275 24 12c0 1.655-.3185 3.218-.955 4.6909-.618 1.4545-1.4724 2.7274-2.5634 3.818-1.073 1.0729-2.3365 1.9274-3.791 2.5639-1.455.618-3.0179.927-4.6909.927zm-7.6364-5.8633V5.8636A9.4843 9.4843 0 0 0 2.755 8.7001C2.373 9.7365 2.1825 10.8365 2.1825 12s.1905 2.2725.5724 3.3274a9.5713 9.5713 0 0 0 1.609 2.809zm1.5-13.7727H18.163a9.4848 9.4848 0 0 0-2.836-1.609c-1.0549-.382-2.1639-.5725-3.3273-.5725-1.1635 0-2.2725.1905-3.327.5725a9.5713 9.5713 0 0 0-2.8094 1.609Zm6.1364 10.3637 4.1179-8.1818H7.9088Zm1.091 2.727h4.3633V8.7276Zm-6.5454 0h4.3634L6.5454 8.7276Zm8.7813 3.791c1.0545-.382 2-.918 2.836-1.609H5.8628a9.5713 9.5713 0 0 0 2.8094 1.609c1.0545.3819 2.1635.5724 3.327.5724 1.0543 0 2.1823-.1579 3.3274-.5725zm4.3089-3.109a9.5713 9.5713 0 0 0 1.609-2.809c.382-1.055.5724-2.164.5724-3.3274 0-1.1635-.1905-2.2635-.5724-3.3-.382-1.055-.918-1.9999-1.609-2.8364Z" />
@@ -145,7 +157,8 @@ export default function WhatIDo() {
       name: "Firebase",
       url: "https://firebase.google.com",
       color: "text-[#FFCA28]",
-      glowColor: "shadow-[#FFCA28]/20 border-[#FFCA28]/30",
+      glowColor: "shadow-[#FFCA28]/20 border-[#FFCA28]/50 bg-[#FFCA28]/5",
+      categories: ["backend"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M19.455 8.369c-.538-.748-1.778-2.285-3.681-4.569-.826-.991-1.535-1.832-1.884-2.245a146 146 0 0 0-.488-.576l-.207-.245-.113-.133-.022-.032-.01-.005L12.57 0l-.609.488c-1.555 1.246-2.828 2.851-3.681 4.64-.523 1.064-.864 2.105-1.043 3.176-.047.241-.088.489-.121.738-.209-.017-.421-.028-.632-.033-.018-.001-.035-.002-.059-.003a7.46 7.46 0 0 0-2.28.274l-.317.089-.163.286c-.765 1.342-1.198 2.869-1.252 4.416-.07 2.01.477 3.954 1.583 5.625 1.082 1.633 2.61 2.882 4.42 3.611l.236.095.071.025.003-.001a9.59 9.59 0 0 0 2.941.568q.171.006.342.006c1.273 0 2.513-.249 3.69-.742l.008.004.313-.145a9.63 9.63 0 0 0 3.927-3.335c1.01-1.49 1.577-3.234 1.641-5.042.075-2.161-.643-4.304-2.133-6.371m-7.083 6.695c.328 1.244.264 2.44-.191 3.558-1.135-1.12-1.967-2.352-2.475-3.665-.543-1.404-.87-2.74-.974-3.975.48.157.922.366 1.315.622 1.132.737 1.914 1.902 2.325 3.461zm.207 6.022c.482.368.99.712 1.513 1.028-.771.21-1.565.302-2.369.273a8 8 0 0 1-.373-.022c.458-.394.869-.823 1.228-1.279zm1.347-6.431c-.516-1.957-1.527-3.437-3.002-4.398-.647-.421-1.385-.741-2.194-.95.011-.134.026-.268.043-.4.014-.113.03-.216.046-.313.133-.689.332-1.37.589-2.025.099-.25.206-.499.321-.74l.004-.008c.177-.358.376-.719.61-1.105l.092-.152-.003-.001c.544-.851 1.197-1.627 1.942-2.311l.288.341c.672.796 1.304 1.548 1.878 2.237 1.291 1.549 2.966 3.583 3.612 4.48 1.277 1.771 1.893 3.579 1.83 5.375-.049 1.395-.461 2.755-1.195 3.933-.694 1.116-1.661 2.05-2.8 2.708-.636-.318-1.559-.839-2.539-1.599.79-1.575.952-3.28.479-5.072zm-2.575 5.397c-.725.939-1.587 1.55-2.09 1.856-.081-.029-.163-.06-.243-.093l-.065-.026c-1.49-.616-2.747-1.656-3.635-3.01-.907-1.384-1.356-2.993-1.298-4.653.041-1.19.338-2.327.882-3.379.316-.07.638-.114.96-.131l.084-.002c.162-.003.324-.003.478 0 .227.011.454.035.677.07.073 1.513.445 3.145 1.105 4.852.637 1.644 1.694 3.162 3.144 4.515z" />
@@ -156,7 +169,8 @@ export default function WhatIDo() {
       name: "Hilt",
       url: "https://developer.android.com/training/dependency-injection/hilt-android",
       color: "text-[#007ACC]",
-      glowColor: "shadow-[#007ACC]/20 border-[#007ACC]/30",
+      glowColor: "shadow-[#007ACC]/20 border-[#007ACC]/50 bg-[#007ACC]/5",
+      categories: ["android"],
       svg: (
         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full" aria-hidden="true">
           <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z" fill="url(#hiltGradient)" opacity="0.15" />
@@ -175,7 +189,8 @@ export default function WhatIDo() {
       name: "Room",
       url: "https://developer.android.com/training/data-storage/room",
       color: "text-[#3DDB85]",
-      glowColor: "shadow-[#3DDB85]/20 border-[#3DDB85]/30",
+      glowColor: "shadow-[#3DDB85]/20 border-[#3DDB85]/50 bg-[#3DDB85]/5",
+      categories: ["android", "backend"],
       svg: (
         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full" aria-hidden="true">
           <path d="M4 14c0 1.66 3.58 3 8 3s8-1.34 8-3M4 18c0 1.66 3.58 3 8 3s8-1.34 8-3" stroke="url(#roomGradient)" strokeWidth="2" strokeLinecap="round" />
@@ -194,7 +209,8 @@ export default function WhatIDo() {
       name: "SQLite",
       url: "https://sqlite.org",
       color: "text-[#003B57]",
-      glowColor: "shadow-[#003B57]/20 border-[#003B57]/30",
+      glowColor: "shadow-[#003B57]/20 border-[#003B57]/50 bg-[#003B57]/5",
+      categories: ["android", "backend"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M21.678.521c-1.032-.92-2.28-.55-3.513.544a8.71 8.71 0 0 0-.547.535c-2.109 2.237-4.066 6.38-4.674 9.544.237.48.422 1.093.544 1.561a13.044 13.044 0 0 1 .164.703s-.019-.071-.096-.296l-.05-.146a1.689 1.689 0 0 0-.033-.08c-.138-.32-.518-.995-.686-1.289-.143.423-.27.818-.376 1.176.484.884.778 2.4.778 2.4s-.025-.099-.147-.442c-.107-.303-.644-1.244-.772-1.464-.217.804-.304 1.346-.226 1.478.152.256.296.698.422 1.186.286 1.1.485 2.44.485 2.44l.017.224a22.41 22.41 0 0 0 .056 2.748c.095 1.146.273 2.13.5 2.657l.155-.084c-.334-1.038-.47-2.399-.41-3.967.09-2.398.642-5.29 1.661-8.304 1.723-4.55 4.113-8.201 6.3-9.945-1.993 1.8-4.692 7.63-5.5 9.788-.904 2.416-1.545 4.684-1.931 6.857.666-2.037 2.821-2.912 2.821-2.912s1.057-1.304 2.292-3.166c-.74.169-1.955.458-2.362.629-.6.251-.762.337-.762.337s1.945-1.184 3.613-1.72C21.695 7.9 24.195 2.767 21.678.521m-18.573.543A1.842 1.842 0 0 0 1.27 2.9v16.608a1.84 1.84 0 0 0 1.835 1.834h9.418a22.953 22.953 0 0 1-.052-2.707c-.006-.062-.011-.141-.016-.2a27.01 27.01 0 0 0-.473-2.378c-.121-.47-.275-.898-.369-1.057-.116-.197-.098-.31-.097-.432 0-.12.015-.245.037-.386a9.98 9.98 0 0 1 .234-1.045l.217-.028c-.017-.035-.014-.065-.031-.097l-.041-.381a32.8 32.8 0 0 1 .382-1.194l.2-.019c-.008-.016-.01-.038-.018-.053l-.043-.316c.63-3.28 2.587-7.443 4.8-9.791.066-.069.133-.128.198-.194Z" />
@@ -205,7 +221,8 @@ export default function WhatIDo() {
       name: "Retrofit",
       url: "https://square.github.io/retrofit",
       color: "text-[#00B0FF]",
-      glowColor: "shadow-[#00B0FF]/20 border-[#00B0FF]/30",
+      glowColor: "shadow-[#00B0FF]/20 border-[#00B0FF]/50 bg-[#00B0FF]/5",
+      categories: ["android", "backend"],
       svg: (
         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full" aria-hidden="true">
           <path d="M17 17h-11m0 0l3-3m-3 3l3 3M7 7h11m0 0l-3-3m3 3l-3 3" stroke="url(#retrofitGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -224,7 +241,8 @@ export default function WhatIDo() {
       name: "Ktor",
       url: "https://ktor.io",
       color: "text-[#FF4081]",
-      glowColor: "shadow-[#FF4081]/20 border-[#FF4081]/30",
+      glowColor: "shadow-[#FF4081]/20 border-[#FF4081]/50 bg-[#FF4081]/5",
+      categories: ["kmp", "backend"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M8 0 0 8l8 8V8h8zm8 8v8H8l8 8 8-8z" />
@@ -235,7 +253,8 @@ export default function WhatIDo() {
       name: "GraphQL",
       url: "https://graphql.org",
       color: "text-[#E10098]",
-      glowColor: "shadow-[#E10098]/20 border-[#E10098]/30",
+      glowColor: "shadow-[#E10098]/20 border-[#E10098]/50 bg-[#E10098]/5",
+      categories: ["backend"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M12.002 0a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm8.54 4.931a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm0 9.862a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm-8.54 4.931a2.138 2.138 0 1 0 0 4.276 2.138 2.138 0 1 0 0-4.276zm-8.542-4.93a2.138 2.138 0 1 0 0 4.276 2.138 2.138 0 1 0 0-4.277zm0-9.863a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm8.542-3.378L2.953 6.777v10.448l9.049 5.224 9.047-5.224V6.777zm0 1.601 7.66 13.27H4.34zm-1.387.371L3.97 15.037V7.363zm2.774 0 6.646 3.838v7.674zM5.355 17.44h13.293l-6.646 3.836z" />
@@ -246,7 +265,8 @@ export default function WhatIDo() {
       name: "Google Play",
       url: "https://play.google.com/console",
       color: "text-[#4285F4]",
-      glowColor: "shadow-[#4285F4]/20 border-[#4285F4]/30",
+      glowColor: "shadow-[#4285F4]/20 border-[#4285F4]/50 bg-[#4285F4]/5",
+      categories: ["android"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z" />
@@ -257,7 +277,8 @@ export default function WhatIDo() {
       name: "Google Maps Platform",
       url: "https://developers.google.com/maps",
       color: "text-[#34A853]",
-      glowColor: "shadow-[#34A853]/20 border-[#34A853]/30",
+      glowColor: "shadow-[#34A853]/20 border-[#34A853]/50 bg-[#34A853]/5",
+      categories: ["android"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z" />
@@ -268,7 +289,8 @@ export default function WhatIDo() {
       name: "Google Cloud",
       url: "https://cloud.google.com",
       color: "text-[#4285F4]",
-      glowColor: "shadow-[#4285F4]/20 border-[#4285F4]/30",
+      glowColor: "shadow-[#4285F4]/20 border-[#4285F4]/50 bg-[#4285F4]/5",
+      categories: ["backend"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z" />
@@ -279,7 +301,8 @@ export default function WhatIDo() {
       name: "Git",
       url: "https://git-scm.com",
       color: "text-[#F05032]",
-      glowColor: "shadow-[#F05032]/20 border-[#F05032]/30",
+      glowColor: "shadow-[#F05032]/20 border-[#F05032]/50 bg-[#F05032]/5",
+      categories: ["android", "kmp", "backend"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M13.09 23.549a1.54 1.54 0 0 1-2.18 0L.451 13.089a1.54 1.54 0 0 1 0-2.179l7.191-7.19 2.733 2.733a1.85 1.85 0 0 0 .964 2.326v6.66a1.849 1.849 0 1 0 1.54 0V8.957l2.508 2.508a1.85 1.85 0 1 0 1.09-1.09l-2.634-2.634a1.85 1.85 0 0 0-2.378-2.377L8.73 2.63 10.91.451a1.54 1.54 0 0 1 2.179 0l10.459 10.46a1.54 1.54 0 0 1 0 2.179z" />
@@ -290,7 +313,8 @@ export default function WhatIDo() {
       name: "GitHub",
       url: "https://github.com",
       color: "text-slate-100",
-      glowColor: "shadow-white/20 border-white/30",
+      glowColor: "shadow-white/20 border-white/50 bg-white/5",
+      categories: ["android", "kmp", "backend"],
       svg: (
         <svg viewBox="0 0 24 24" className="w-full h-full fill-current" aria-hidden="true">
           <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -299,13 +323,22 @@ export default function WhatIDo() {
     }
   ];
 
-  // 4 Premium Feature Cards
+  // 4 Premium Feature Cards with code snippet descriptors
   const cards: CardItem[] = [
     {
+      id: "android",
       title: "Android Engineering",
-      description: "Build scalable, maintainable, and high-performance Android applications using Kotlin, Jetpack libraries, modern architecture patterns, and Google's recommended best practices.",
+      description: "Build scalable, maintainable, and high-performance Android applications using Kotlin, Jetpack libraries, MVVM/MVI, and Google's recommended architecture practices.",
       number: "01",
       gradient: "from-emerald-500/20 to-teal-500/10",
+      codeFun: "AndroidApp",
+      codeLines: [
+        "CleanArchitecture {",
+        "    MVI_Pattern()",
+        "    JetpackLibraries()",
+        "    RoomDatabase()",
+        "}"
+      ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-emerald-400">
           <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
@@ -314,10 +347,19 @@ export default function WhatIDo() {
       )
     },
     {
-      title: "Kotlin Multiplatform Development",
-      description: "Develop shared business logic across Android, iOS, Desktop, and Web platforms using Kotlin Multiplatform while preserving native platform experiences.",
+      id: "kmp",
+      title: "Kotlin Multiplatform",
+      description: "Develop shared business logic and infrastructure across iOS, Android, and Desktop platforms using KMP, preserving native performance and client-side modules.",
       number: "02",
       gradient: "from-purple-500/20 to-indigo-500/10",
+      codeFun: "MultiplatformCore",
+      codeLines: [
+        "KMPSharedLogic {",
+        "    KtorHttpClient()",
+        "    SQLDelightCache()",
+        "    iOSPlatform()",
+        "}"
+      ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-purple-400">
           <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
@@ -326,10 +368,19 @@ export default function WhatIDo() {
       )
     },
     {
+      id: "ui",
       title: "Modern UI & Compose",
-      description: "Create beautiful, responsive, and performant user interfaces using Jetpack Compose and Compose Multiplatform following Material Design 3 principles.",
+      description: "Create fluid, responsive, and performant user interfaces using Jetpack Compose and Compose Multiplatform following strict Material Design 3 guidelines.",
       number: "03",
       gradient: "from-blue-500/20 to-cyan-500/10",
+      codeFun: "ResponsiveUI",
+      codeLines: [
+        "MaterialTheme3 {",
+        "    ComposeCanvas()",
+        "    AdaptiveLayouts()",
+        "    FluidAnimations()",
+        "}"
+      ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-blue-400">
           <polygon points="12 2 2 7 12 12 22 7 12 2" />
@@ -339,10 +390,19 @@ export default function WhatIDo() {
       )
     },
     {
+      id: "backend",
       title: "Backend & Cloud Integration",
-      description: "Integrate Firebase services, REST APIs, GraphQL, authentication systems, cloud services, analytics, local databases, and push notification platforms.",
+      description: "Integrate Firebase, REST APIs, GraphQL, data synchronization mechanisms, analytics trackers, push messaging, and local storage layers.",
       number: "04",
       gradient: "from-amber-500/20 to-orange-500/10",
+      codeFun: "BackendSync",
+      codeLines: [
+        "FirebaseServices {",
+        "    Auth()",
+        "    CloudMessaging()",
+        "    GraphQLClient()",
+        "}"
+      ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-amber-400">
           <ellipse cx="12" cy="5" rx="9" ry="3" />
@@ -387,7 +447,7 @@ export default function WhatIDo() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto z-10">
+      <div className="relative max-w-[90%] mx-auto z-10">
         
         {/* Header Section */}
         <motion.div 
@@ -447,7 +507,15 @@ export default function WhatIDo() {
               key={idx}
               variants={itemVariants}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="group relative flex flex-col justify-between h-full bg-slate-900/40 border border-slate-900 rounded-2xl p-6 backdrop-blur-lg overflow-hidden shadow-xl hover:shadow-2xl hover:border-slate-800 transition-all duration-300"
+              onMouseEnter={() => {
+                setActiveCategory(card.id);
+                setHoveredCardIndex(idx);
+              }}
+              onMouseLeave={() => {
+                setActiveCategory(null);
+                setHoveredCardIndex(null);
+              }}
+              className="group relative flex flex-col justify-between h-full bg-slate-900/40 border border-slate-900 rounded-2xl p-6 backdrop-blur-lg overflow-hidden shadow-xl hover:shadow-2xl hover:border-slate-800 transition-all duration-300 cursor-pointer"
             >
               {/* Top Gradient Background */}
               <div className={`absolute top-0 right-0 w-32 h-32 rounded-full bg-gradient-to-br ${card.gradient} blur-3xl group-hover:scale-125 transition-transform duration-500 pointer-events-none`} />
@@ -466,9 +534,36 @@ export default function WhatIDo() {
                   {card.title}
                 </h3>
                 
-                <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed">
+                <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed mb-4">
                   {card.description}
                 </p>
+              </div>
+
+              {/* Compose Interactive Code Preview Overlay */}
+              <div className="flex-grow flex flex-col justify-end">
+                <AnimatePresence>
+                  {hoveredCardIndex === idx && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className="mt-4 pt-4 border-t border-slate-800/80 font-mono text-[10px] text-slate-400 text-left overflow-hidden"
+                    >
+                      <div className="text-blue-400 font-semibold">@Composable</div>
+                      <div>
+                        <span className="text-purple-400">fun</span>{" "}
+                        <span className="text-yellow-400">{card.codeFun}</span>() &#123;
+                      </div>
+                      <div className="pl-4">
+                        {card.codeLines.map((line, lIdx) => (
+                          <div key={lIdx}>{line}</div>
+                        ))}
+                      </div>
+                      <div>&#125;</div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               {/* Bottom decorative bar */}
@@ -490,7 +585,7 @@ export default function WhatIDo() {
               Core Tech Stack
             </h2>
             <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-              Explore the framework ecosystem powering robust multiplatform apps. Hover to inspect, click to read official specifications.
+              Explore the framework ecosystem powering robust multiplatform apps. Hover cards to inspect linked tech stacks, hover icons for details.
             </p>
           </motion.div>
 
@@ -502,47 +597,71 @@ export default function WhatIDo() {
             viewport={{ once: true }}
             className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 gap-4 max-w-6xl mx-auto"
           >
-            {technologies.map((tech, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="relative"
-              >
-                <a
-                  href={tech.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Visit official documentation for ${tech.name}`}
-                  className="flex flex-col items-center justify-center aspect-square rounded-2xl bg-slate-900/30 hover:bg-slate-900 border border-slate-900/80 hover:border-slate-800 p-4 transition-all duration-300 hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950 group shadow-md"
-                  onMouseEnter={() => setHoveredTech(tech.name)}
-                  onMouseLeave={() => setHoveredTech(null)}
-                  onFocus={() => setHoveredTech(tech.name)}
-                  onBlur={() => setHoveredTech(null)}
-                >
-                  <div className={`w-10 h-10 transition-transform duration-300 group-hover:scale-110 filter group-hover:drop-shadow-lg ${tech.color}`}>
-                    {tech.svg}
-                  </div>
-                </a>
+            {technologies.map((tech, idx) => {
+              const isMatch = activeCategory ? tech.categories.includes(activeCategory) : false;
+              const hasActiveCategory = activeCategory !== null;
+              
+              // Determine card state classes
+              let containerClass = "flex flex-col items-center justify-center aspect-square rounded-2xl p-4 transition-all duration-300 group shadow-md border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950";
+              let animationStyle = {};
+              
+              if (hasActiveCategory) {
+                if (isMatch) {
+                  // Active matched state: pulse + custom brand border
+                  containerClass += ` bg-slate-900 border-opacity-100 scale-105 ${tech.glowColor}`;
+                } else {
+                  // Dimm state
+                  containerClass += " bg-slate-950/20 border-slate-950/50 opacity-20 scale-95";
+                }
+              } else {
+                // Default state
+                containerClass += " bg-slate-900/30 hover:bg-slate-900 border-slate-900/80 hover:border-slate-800 hover:-translate-y-1.5";
+              }
 
-                {/* Accessible Tooltip */}
-                <AnimatePresence>
-                  {hoveredTech === tech.name && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute left-1/2 -translate-x-1/2 -top-12 z-50 pointer-events-none"
-                    >
-                      <div className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-white whitespace-nowrap shadow-xl">
-                        {tech.name}
-                        <div className="absolute left-1/2 -translate-x-1/2 top-full w-2 h-2 rotate-45 bg-slate-900 border-r border-b border-slate-800" />
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
+              return (
+                <motion.div
+                  key={idx}
+                  variants={itemVariants}
+                  className="relative"
+                  animate={hasActiveCategory && isMatch ? { scale: [1, 1.05, 1] } : {}}
+                  transition={{ repeat: Infinity, duration: 1.5, repeatType: "reverse" }}
+                >
+                  <a
+                    href={tech.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit official documentation for ${tech.name}`}
+                    className={containerClass}
+                    onMouseEnter={() => setHoveredTech(tech.name)}
+                    onMouseLeave={() => setHoveredTech(null)}
+                    onFocus={() => setHoveredTech(tech.name)}
+                    onBlur={() => setHoveredTech(null)}
+                  >
+                    <div className={`w-10 h-10 transition-transform duration-300 group-hover:scale-110 filter group-hover:drop-shadow-lg ${tech.color}`}>
+                      {tech.svg}
+                    </div>
+                  </a>
+
+                  {/* Accessible Tooltip */}
+                  <AnimatePresence>
+                    {hoveredTech === tech.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-1/2 -translate-x-1/2 -top-12 z-50 pointer-events-none"
+                      >
+                        <div className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-white whitespace-nowrap shadow-xl">
+                          {tech.name}
+                          <div className="absolute left-1/2 -translate-x-1/2 top-full w-2 h-2 rotate-45 bg-slate-900 border-r border-b border-slate-800" />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
 

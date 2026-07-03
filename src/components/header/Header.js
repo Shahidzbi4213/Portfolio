@@ -15,7 +15,6 @@ import {
   bigProjects,
   educationInfo
 } from "../../portfolio";
-
 function Header() {
   const {isDark} = useContext(StyleContext);
   const viewExperience = workExperiences.display;
@@ -30,7 +29,11 @@ function Header() {
 
   return (
     <Headroom>
-      <header className={isDark ? "dark-menu header" : "header"}>
+      <header
+        className={
+          isDark ? "dark-menu header m3-top-app-bar" : "header m3-top-app-bar"
+        }
+      >
         <a href="/" className="logo">
           <span className="grey-color"> &lt;</span>
           <span className="logo-name">{greeting.username}</span>
@@ -47,57 +50,78 @@ function Header() {
         <ul className={isDark ? "dark-menu menu" : "menu"}>
           {viewSkills && (
             <li>
-              <a href="#skills">Skills</a>
+              <a href="#skills" className="m3-nav-item">
+                Skills
+              </a>
             </li>
           )}
           {viewExperience && (
             <li>
-              <a href="#experience">Experience</a>
+              <a href="#experience" className="m3-nav-item">
+                Experience
+              </a>
             </li>
           )}
           {viewEducation && (
             <li>
-              <a href="#education">Education</a>
+              <a href="#education" className="m3-nav-item">
+                Education
+              </a>
             </li>
           )}
           {viewFeatured && (
             <li>
-              <a href="#projects">Featured</a>
+              <a href="#projects" className="m3-nav-item">
+                Featured
+              </a>
             </li>
           )}
           {viewOpenSource && (
             <li>
-              <a href="#opensource">Open Source</a>
+              <a href="#opensource" className="m3-nav-item">
+                Open Source
+              </a>
             </li>
           )}
           {viewAchievement && (
             <li>
-              <a href="#achievements">Achievements</a>
+              <a href="#achievements" className="m3-nav-item">
+                Achievements
+              </a>
             </li>
           )}
           {viewBlog && (
             <li>
-              <a href="#blogs">Blogs</a>
+              <a href="#blogs" className="m3-nav-item">
+                Blogs
+              </a>
             </li>
           )}
           {viewTalks && (
             <li>
-              <a href="#talks">Talks</a>
+              <a href="#talks" className="m3-nav-item">
+                Talks
+              </a>
             </li>
           )}
           {viewResume && (
             <li>
-              <a href="#resume">Resume</a>
+              <a href="#resume" className="m3-nav-item">
+                Resume
+              </a>
             </li>
           )}
           <li>
-            <a href="#contact">Contact Me</a>
-          </li>
-          <li>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a>
-              <ToggleSwitch />
+            <a href="#contact" className="m3-nav-item">
+              Contact Me
             </a>
+          </li>
+
+          <li className="theme-toggle-li">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <span className="toggle-switch-wrapper">
+              <ToggleSwitch />
+            </span>
           </li>
         </ul>
       </header>

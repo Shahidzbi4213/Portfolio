@@ -1,110 +1,124 @@
 @import "../../_globalColor";
 
 .repo-card-div {
-  color: var(--text-secondary);
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-xl);
-  padding: 2rem;
+  color: var(--md-sys-color-on-surface-variant);
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 24px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  transition: all 0.25s var(--md-sys-motion-easing-standard);
 }
+
 .repo-card-div:hover {
-  box-shadow: var(--shadow-md);
+  background-color: var(--md-sys-color-surface-container);
+  border-color: var(--md-sys-color-outline);
+  box-shadow: var(--md-sys-elevation-level2);
   transform: translateY(-4px);
-  border-color: var(--accent);
-}
-
-.repo-stats {
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  font-size: 13px;
-  color: $githubRepoCardRepoCardStatsColor;
-}
-
-.repo-left-stat {
-  -webkit-box-flex: 1;
-  flex-grow: 1;
-  display: flex;
-}
-
-.language-color {
-  width: 10px;
-  height: 10px;
-  background-color: $githubRepoCardLanguageColorBG;
-  margin-right: 0.25rem;
-  border-radius: 100%;
-}
-
-.repo-left-stat span {
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  margin-right: 0.75rem;
 }
 
 .repo-name-div {
   display: flex;
   align-items: center;
-}
-
-.repo-svg {
-  margin-right: 0.5rem;
-  min-width: 16px;
+  margin-bottom: 12px;
 }
 
 .repo-logo {
   width: 32px;
   height: 32px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--md-sys-shape-corner-small);
   object-fit: cover;
-  margin-right: 0.75rem;
+  margin-right: 12px;
   flex-shrink: 0;
-  border: 1px solid var(--border);
+  border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .repo-name {
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: $githubRepoCardRepoNameColor;
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
+  color: var(--md-sys-color-on-surface);
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: -0.2px;
   overflow: hidden;
   margin: 0px;
-  height: auto;
   line-height: 1.2;
 }
 
-.repo-star-svg {
-  margin-right: 0.3rem;
+.repo-svg {
+  margin-right: 8px;
+  min-width: 16px;
+  fill: var(--md-sys-color-primary);
 }
 
 .repo-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 16px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  flex-grow: 1;
 }
 
+.repo-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--md-sys-color-outline);
+  margin-top: auto;
+}
+
+.repo-left-stat {
+  display: flex;
+  align-items: center;
+}
+
+.repo-left-stat span {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.language-color {
+  width: 10px;
+  height: 10px;
+  margin-right: 4px;
+  border-radius: 100%;
+}
+
+.repo-star-svg {
+  margin-right: 4px;
+  fill: var(--md-sys-color-outline);
+}
+
+.repo-right-stat {
+  font-family: monospace;
+}
+
+/* Backward compatibility dark classes mapping to default M3 */
 .dark-card-mode {
-  background-color: var(--surface-variant);
-  color: var(--text-primary);
-  border-color: var(--border);
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface-variant);
+  border-color: var(--md-sys-color-outline-variant);
+}
+.dark-card-mode:hover {
+  background-color: var(--md-sys-color-surface-container) !important;
+  border-color: var(--md-sys-color-outline);
 }
 .dark-card-mode p {
-  color: var(--text-secondary);
+  color: var(--md-sys-color-on-surface-variant);
 }
-
 .dark-card-mode .repo-svg {
-  fill: var(--text-primary);
-}
-
-.dark-card-mode:hover {
-  background-color: var(--surface-variant) !important;
-  box-shadow: var(--shadow-md);
-  border-color: var(--accent);
+  fill: var(--md-sys-color-primary);
 }

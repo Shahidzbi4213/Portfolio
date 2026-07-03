@@ -1,84 +1,162 @@
 @import "../../_globalColor";
 
-.contact-div-main {
-  display: flex;
-}
-
-.dark-mode a {
-  color: $textColorDark;
-}
-
-.contact-div-main > * {
-  flex: 1;
-}
-
-.contact-title {
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
-
-.contact-detail,
-.contact-detail-email {
-  margin-top: 16px;
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  display: block;
-  transition: color 0.2s ease;
-}
-
-.contact-detail:hover,
-.contact-detail-email:hover {
-  color: var(--primary);
-}
-
-.contact-subtitle {
-  text-transform: uppercase;
-}
-
-.contact-text-div {
-  margin-top: 1.5rem;
-}
-
 .contact-margin-top {
   margin-top: 4rem;
 }
 
-.contact-image-div > img {
-  max-width: 100%;
-  height: auto;
-  margin-left: 1.5rem;
-  margin-top: -4rem;
+.contact-div-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 24px 0;
 }
 
-/* Media Query */
-@media (max-width: 768px) {
+/* Centered M3 Elevated Contact Card */
+.m3-contact-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: var(--md-sys-elevation-level2);
+  padding: 40px;
+  text-align: center;
+  box-sizing: border-box;
+  transition: all 0.25s var(--md-sys-motion-easing-standard);
+
+  &:hover {
+    background-color: var(--md-sys-color-surface-container);
+    border-color: var(--md-sys-color-outline);
+    box-shadow: var(--md-sys-elevation-level3);
+  }
+}
+
+.contact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+
+  i {
+    font-size: 0.75rem;
+  }
+}
+
+.contact-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 12px 0;
+}
+
+.contact-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 24px;
+}
+
+.contact-card-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+/* M3 Button styling */
+.m3-filled-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary) !important;
+  border-radius: var(--md-sys-shape-corner-full);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s var(--md-sys-motion-easing-standard);
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+    box-shadow: var(--md-sys-elevation-level1);
+  }
+}
+
+.m3-outlined-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background-color: transparent;
+  color: var(--md-sys-color-primary) !important;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s var(--md-sys-motion-easing-standard);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--md-sys-color-surface-container-high);
+    border-color: var(--md-sys-color-primary);
+  }
+}
+
+.contact-card-divider {
+  height: 1px;
+  background-color: var(--md-sys-color-outline-variant);
+  margin: 24px 0;
+}
+
+.contact-card-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-sub-label {
+  font-size: 0.8rem;
+  color: var(--md-sys-color-outline);
+  margin-bottom: 12px;
+}
+
+.social-links-container {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .m3-contact-card {
+    padding: 24px;
+  }
   .contact-title {
-    font-size: 32px;
-    text-align: center;
+    font-size: 1.6rem;
   }
-
   .contact-subtitle {
-    font-size: 16px;
-    line-height: normal;
-    text-align: center;
+    font-size: 0.95rem;
   }
+  .contact-card-actions {
+    flex-direction: column;
+    width: 100%;
 
-  .contact-text-div {
-    text-align: center;
-    margin-top: 1.5rem;
-  }
-
-  .contact-detail,
-  .contact-detail-email {
-    font-size: 18px;
-  }
-
-  .contact-image-div {
-    display: none;
+    .m3-filled-btn,
+    .m3-outlined-btn {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }
