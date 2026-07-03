@@ -6,7 +6,6 @@ import WorkExperience from "./workExperience/WorkExperience";
 import Projects from "./projects/Projects";
 import StartupProject from "./StartupProjects/StartupProject";
 import Achievement from "./achievement/Achievement";
-import Footer from "../components/footer/Footer";
 import Talks from "./talks/Talks";
 import Podcast from "./podcast/Podcast";
 import Education from "./education/Education";
@@ -60,7 +59,6 @@ const Main = () => {
             <Podcast />
             <Education />
             <Profile />
-            <Footer />
             <ScrollToTopButton />
           </>
         )}
