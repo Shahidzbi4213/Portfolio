@@ -80,24 +80,6 @@ export default function Projects() {
             },
             {
               node: {
-                id: "repo-screeny-compose",
-                name: "Screeny-Compose",
-                description:
-                  "A wallpaper application using Jetpack Compose and Pexels API.",
-                url: "https://github.com/Shahidzbi4213/Screeny-Compose",
-                forkCount: 0,
-                stargazers: {
-                  totalCount: 15
-                },
-                diskUsage: 1500,
-                primaryLanguage: {
-                  name: "Kotlin",
-                  color: "#C018E4"
-                }
-              }
-            },
-            {
-              node: {
                 id: "repo-reels",
                 name: "Reels Library",
                 description:
@@ -113,24 +95,6 @@ export default function Projects() {
                   color: "#C018E4"
                 },
                 logoUrl: "/apps/default-reels-logo.jpg"
-              }
-            },
-            {
-              node: {
-                id: "repo-onetapgoogle",
-                name: "OneTapGoogle",
-                description:
-                  "OneTap Google Sign-In helper library for authentication implementation.",
-                url: "https://github.com/Shahidzbi4213/OneTapGoogle",
-                forkCount: 0,
-                stargazers: {
-                  totalCount: 10
-                },
-                diskUsage: 500,
-                primaryLanguage: {
-                  name: "Kotlin",
-                  color: "#C018E4"
-                }
               }
             }
           ]);
