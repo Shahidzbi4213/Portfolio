@@ -100,9 +100,9 @@ export default function Greeting() {
 
               <p
                 className={
-                    isDark
-                      ? "dark-mode greeting-text-p"
-                      : "greeting-text-p subTitle"
+                  isDark
+                    ? "dark-mode greeting-text-p"
+                    : "greeting-text-p subTitle"
                 }
               >
                 {greeting.subTitle}
@@ -214,49 +214,80 @@ export default function Greeting() {
                       </div>
                     </div>
 
-                    {/* Skill Bars Card */}
+                    {/* Primary Expertise Card */}
                     <div className="mock-details-card">
                       <div className="card-header-mock">
                         <i className="fas fa-code header-icon-mock"></i>
                         <span>Primary Expertise</span>
                       </div>
 
-                      <div className="mock-skill-row">
-                        <div className="skill-meta-mock">
-                          <span>Android & Kotlin</span>
-                          <span>95%</span>
+                      <div className="mock-list-item">
+                        <div className="mock-list-item-icon bg-android">
+                          <i className="fab fa-android"></i>
                         </div>
-                        <div className="mock-progress-track">
-                          <div
-                            className="mock-progress-fill"
-                            style={{width: "95%"}}
-                          ></div>
-                        </div>
-                      </div>
-
-                      <div className="mock-skill-row">
-                        <div className="skill-meta-mock">
-                          <span>Jetpack Compose</span>
-                          <span>90%</span>
-                        </div>
-                        <div className="mock-progress-track">
-                          <div
-                            className="mock-progress-fill"
-                            style={{width: "90%"}}
-                          ></div>
+                        <div className="mock-list-item-content">
+                          <span className="mock-list-item-title">
+                            Android & Kotlin
+                          </span>
+                          <span className="mock-list-item-subtitle">
+                            Core Architecture
+                          </span>
                         </div>
                       </div>
 
-                      <div className="mock-skill-row">
-                        <div className="skill-meta-mock">
-                          <span>Kotlin Multiplatform</span>
-                          <span>80%</span>
+                      <div className="mock-list-item">
+                        <div className="mock-list-item-icon bg-compose">
+                          <svg
+                            className="compose-logo-mini"
+                            viewBox="0 0 128 128"
+                            fill="currentColor"
+                          >
+                            <path
+                              d="M41.2 76.8a4 4 0 0 1-.5-1.3c.1.5.3.9.5 1.3zm.6.7c.2.2.5.4.7.5l18.9 10.6-18.9-10.6a2.9 2.9 0 0 1-.7-.5z"
+                              opacity="0.3"
+                            />
+                            <path
+                              d="M64.3 102h-.1a8.3 8.3 0 0 1-4-1L32 85.3c-1.7-.9-2.7-2.7-2.7-4.5V48.6c0-1.4.2-2.7.8-3.8L8.1 32.5C7.2 34.4 6.7 36.6 6.8 38.9v52.9a8.7 8.7 0 0 0 4.5 7.5L57.8 125.3c2.1 1.2 4.3 1.7 6.6 1.7V102z"
+                              opacity="0.4"
+                            />
+                            <path
+                              d="M30.1 44.8a7.2 7.2 0 0 1 2.8-3.1L59.4 26.2a8.1 8.1 0 0 1 8 0L94.3 41.3c1 .5 2 1.5 3 2.7l21.7-13a14.9 14.9 0 0 0-5-4.5L69.8 1.8a13.3 13.3 0 0 0-13.2.1L12.8 27.5a11.7 11.7 0 0 0-4.7 5l22 12.3z"
+                              opacity="0.8"
+                            />
+                            <path
+                              d="M119 31L97.3 43.9c.8 1.2 1.3 2.6 1.4 4.1v30.5c0 2.8-1.5 5.3-3.9 6.9L68.2 100.9a8.1 8.1 0 0 1-3.8 1.1V127c2.2 0 4.4-.5 6.6-1.8l43.8-25.6c4-2.4 6.5-6.7 6.5-11.4V37.8c0-2.4-.8-4.8-2.2-6.8z"
+                              opacity="0.6"
+                            />
+                          </svg>
                         </div>
-                        <div className="mock-progress-track">
-                          <div
-                            className="mock-progress-fill"
-                            style={{width: "80%"}}
-                          ></div>
+                        <div className="mock-list-item-content">
+                          <span className="mock-list-item-title">
+                            Jetpack Compose
+                          </span>
+                          <span className="mock-list-item-subtitle">
+                            Declarative UI
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="mock-list-item">
+                        <div className="mock-list-item-icon bg-kmp">
+                          <svg
+                            viewBox="0 0 48 48"
+                            fill="currentColor"
+                            className="kmp-logo-mini"
+                            style={{width: "12px", height: "12px"}}
+                          >
+                            <path d="M0 22.5629V0.0835311L22.4794 22.5629H0ZM0 25.4372V48H0.0572568L22.6201 25.4372H0ZM25.9906 22.0094L48 0H3.98128L25.9906 22.0094ZM26.0193 26.1028L4.1221 48H47.9164L26.0193 26.1028Z" />
+                          </svg>
+                        </div>
+                        <div className="mock-list-item-content">
+                          <span className="mock-list-item-title">
+                            Kotlin Multiplatform
+                          </span>
+                          <span className="mock-list-item-subtitle">
+                            Cross-Platform Logic
+                          </span>
                         </div>
                       </div>
                     </div>
