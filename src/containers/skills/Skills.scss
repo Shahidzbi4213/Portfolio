@@ -22,10 +22,20 @@
 
 .skills-heading {
   font-size: 56px;
-  font-weight: 400;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
 }
-.subTitle {
-  color: $subTitle;
+.skills-text-subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.skills-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 12px 0;
 }
 
 /* Media Query */

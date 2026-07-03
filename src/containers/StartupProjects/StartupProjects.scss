@@ -99,16 +99,16 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--accent);
-  background-color: rgba(14, 165, 233, 0.1);
-  padding: 4px 10px;
+  color: var(--primary);
+  background-color: var(--primary-container);
+  padding: 6px 12px;
   border-radius: var(--radius-sm);
   display: inline-block;
 }
 
 .project-card-dark .project-category {
-  color: var(--accent);
-  background-color: rgba(56, 189, 248, 0.15);
+  color: var(--primary);
+  background-color: var(--primary-container);
 }
 
 .project-review-badge {
@@ -221,8 +221,8 @@
   justify-content: center;
   font-size: 0.85rem;
   font-weight: 600;
-  height: 44px;
-  border-radius: var(--radius-md);
+  height: 40px;
+  border-radius: var(--radius-full); /* M3 pill shape */
   text-decoration: none;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -232,12 +232,13 @@
 
 .playstore-btn {
   background-color: var(--primary);
-  color: var(--background) !important;
+  color: var(--surface) !important;
 }
 
 .playstore-btn:hover {
   background-color: var(--accent-hover);
-  color: #ffffff !important;
+  color: var(--surface) !important;
+  box-shadow: var(--shadow-sm);
 }
 
 .project-card-dark .playstore-btn {
@@ -246,34 +247,35 @@
 }
 
 .project-card-dark .playstore-btn:hover {
-  background-color: var(--accent);
-  color: var(--primary) !important;
+  background-color: var(--accent-hover);
+  color: var(--background) !important;
+  box-shadow: var(--shadow-sm);
 }
 
 .website-btn {
   background-color: transparent;
-  color: var(--text-primary) !important;
+  color: var(--primary) !important;
   border-color: var(--border);
 }
 
 .website-btn:hover {
   background-color: var(--surface-variant);
-  border-color: var(--accent);
+  border-color: var(--primary);
 }
 
 .project-card-dark .website-btn {
-  color: var(--text-primary) !important;
+  color: var(--primary) !important;
   border-color: var(--border);
 }
 
 .project-card-dark .website-btn:hover {
   background-color: var(--surface-variant);
-  border-color: var(--accent);
+  border-color: var(--primary);
 }
 
 .generic-btn {
   background-color: var(--secondary);
-  color: #ffffff !important;
+  color: var(--surface) !important;
 }
 
 .generic-btn:hover {

@@ -8,9 +8,9 @@
   font-weight: 600;
   width: max-content;
   padding: 12px 28px;
-  margin-right: 50px;
-  text-transform: none; /* Material 3 favors mixed case */
-  border-radius: var(--radius-xxl); /* 28px radius */
+  margin-right: 24px; /* Reduced from 50px for closer, cleaner grouping */
+  text-transform: none;
+  border-radius: var(--radius-full); /* M3 pill shape */
   text-align: center;
   text-decoration: none;
   display: block;
@@ -19,6 +19,20 @@
   cursor: pointer;
   box-shadow: var(--shadow-sm);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.outlined-button {
+    background-color: transparent;
+    border: 1px solid var(--border);
+    color: var(--accent) !important;
+    box-shadow: none;
+
+    &:hover {
+      background-color: var(--surface-variant);
+      border-color: var(--accent);
+      color: var(--accent) !important;
+      box-shadow: none;
+    }
+  }
 }
 
 .main-button:hover {

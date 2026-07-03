@@ -58,12 +58,11 @@
 .repo-logo {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
   margin-right: 0.75rem;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
 }
 
 .repo-name {
@@ -71,9 +70,9 @@
   text-overflow: ellipsis;
   color: $githubRepoCardRepoNameColor;
   margin-bottom: 0.75rem;
-  font-size: 25px;
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.2px;
   overflow: hidden;
   margin: 0px;
   height: auto;

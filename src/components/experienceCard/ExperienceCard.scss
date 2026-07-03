@@ -1,7 +1,5 @@
 @import "../../_globalColor";
 
-@import "../../_globalColor";
-
 .experience-card {
   position: relative;
   background-color: var(--surface);
@@ -98,7 +96,8 @@
   margin-right: auto;
   width: 5rem;
   height: 5rem;
-  box-shadow: 0 0.25rem 0.5rem $lightBoxShadowDarker;
+  box-shadow: var(--shadow-sm);
+  border: 3px solid var(--surface);
   border-radius: 50%;
 }
 
@@ -196,6 +195,6 @@
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
   }
 }

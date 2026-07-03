@@ -43,7 +43,8 @@
   margin-right: 2rem;
   width: 6rem;
   height: 6rem;
-  box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
+  box-shadow: var(--shadow-sm);
+  border: 3px solid var(--border);
   border-radius: 50%;
 }
 

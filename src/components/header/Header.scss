@@ -21,10 +21,12 @@
 }
 
 .header {
-  background-color: $lightBackground1;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
   max-width: 100%;
-  padding: 15px 20px;
+  padding: 10px 40px;
   margin: 0px auto;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .header ul {
@@ -40,14 +42,18 @@
 
 .header li a {
   display: block;
-  padding: 15px 20px;
+  padding: 10px 20px;
+  margin: 0 4px;
   color: $textColor;
   text-decoration: none;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
 }
 
-.header li a:hover,
-.header .menu-btn:hover {
-  background-color: $headerHoverBG;
+.header li a:hover {
+  background-color: var(--surface-variant);
+  color: var(--primary);
 }
 
 .header .logo {
