@@ -16,7 +16,7 @@ export default function Projects() {
 
   useEffect(() => {
     const getRepoData = () => {
-      fetch(process.env.PUBLIC_URL + "/profile.json")
+      fetch(process.env.PUBLIC_URL + "/profile.json?v=2")
         .then(result => {
           if (result.ok) {
             return result.json();
@@ -61,7 +61,7 @@ export default function Projects() {
             {
               node: {
                 id: "repo-wallpaper",
-                name: "WallpaperApp-Cmp",
+                name: "Screeny",
                 description:
                   "A beautiful Wallpaper application built with Kotlin Multiplatform and Compose Multiplatform for Android, iOS, and Desktop (Windows, macOS, Linux).",
                 url: "https://github.com/Shahidzbi4213/WallpaperApp-Cmp",
