@@ -63,7 +63,7 @@ export default function Projects() {
                 id: "repo-wallpaper",
                 name: "WallpaperApp-Cmp",
                 description:
-                  "A beautiful Wallpaper application built with Kotlin Multiplatform and Compose Multiplatform for Android and iOS.",
+                  "A beautiful Wallpaper application built with Kotlin Multiplatform and Compose Multiplatform for Android, iOS, and Desktop (Windows, macOS, Linux).",
                 url: "https://github.com/Shahidzbi4213/WallpaperApp-Cmp",
                 forkCount: 0,
                 stargazers: {

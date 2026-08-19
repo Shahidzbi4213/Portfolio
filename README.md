@@ -42,7 +42,7 @@ I actively contribute to the open-source community. Here are some featured libra
 - **[GeoQibla](https://github.com/Shahidzbi4213/GeoQibla)**
   - *Description:* A Kotlin Multiplatform (KMP) Compose library designed to calculate Qibla direction, manage location services, and integrate compass sensor functionality dynamically.
 - **[WallpaperApp-Cmp](https://github.com/Shahidzbi4213/WallpaperApp-Cmp)**
-  - *Description:* A beautiful wallpaper application built with Compose Multiplatform for Android and iOS.
+  - *Description:* A beautiful wallpaper application built with Compose Multiplatform for Android, iOS, and Desktop (Windows, macOS, Linux).
 - **[SampleReelsApp](https://github.com/Shahidzbi4213/SampleReelsApp)**
   - *Description:* Seamless short video playback player using Jetpack Compose and ExoPlayer/Media3.
 - **[Screeny-Compose](https://github.com/Shahidzbi4213/Screeny-Compose)**
