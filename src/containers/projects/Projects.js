@@ -75,7 +75,7 @@ export default function Projects() {
                   color: "#C018E4"
                 },
                 logoUrl:
-                  "https://raw.githubusercontent.com/Shahidzbi4213/WallpaperApp-Cmp/main/iosApp/iosApp/Assets.xcassets/AppIcon.appiconset/app-icon-1024.png"
+                  "https://raw.githubusercontent.com/Shahidzbi4213/WallpaperApp-Cmp/main/desktopApp/src/main/resources/screeny.png"
               }
             },
             {
