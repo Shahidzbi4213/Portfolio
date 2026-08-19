@@ -8,7 +8,7 @@
               "id": "repo-wallpaper",
               "name": "Screeny",
               "description": "A beautiful Wallpaper application built with Kotlin Multiplatform and Compose Multiplatform for Android, iOS, and Desktop (Windows, macOS, Linux).",
-              "url": "https://github.com/Shahidzbi4213/Screeny",
+              "url": "https://github.com/Shahidzbi4213/WallpaperApp-Cmp",
               "forkCount": 0,
               "stargazers": {
                 "totalCount": 1
@@ -18,7 +18,7 @@
                 "name": "Kotlin",
                 "color": "#F18E33"
               },
-              "logoUrl": "https://raw.githubusercontent.com/Shahidzbi4213/Screeny/main/androidApp/src/main/ic_launcher-playstore.png"
+              "logoUrl": "https://raw.githubusercontent.com/Shahidzbi4213/WallpaperApp-Cmp/main/androidApp/src/main/ic_launcher-playstore.png"
             }
           },
           {
