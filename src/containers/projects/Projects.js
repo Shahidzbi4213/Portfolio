@@ -75,7 +75,7 @@ export default function Projects() {
                   color: "#C018E4"
                 },
                 logoUrl:
-                  "https://raw.githubusercontent.com/Shahidzbi4213/WallpaperApp-Cmp/main/desktopApp/src/main/resources/screeny.png"
+                  "https://raw.githubusercontent.com/Shahidzbi4213/WallpaperApp-Cmp/main/androidApp/src/main/ic_launcher-playstore.png"
               }
             },
             {
